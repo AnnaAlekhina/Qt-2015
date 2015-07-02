@@ -32,3 +32,9 @@ Makefile*
 #QtCtreator Qml
 *.qmlproject.user
 *.qmlproject.user.*
+
+#Qt build directories
+/build-*
+
+#remove first from git
+/first

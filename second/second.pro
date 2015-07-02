@@ -1,16 +1,14 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2015-06-30T23:20:55
+# Project created by QtCreator 2015-07-02T23:29:18
 #
 #-------------------------------------------------
 
 QT       += core
-
 QT       += testlib
-
 QT       -= gui
 
-TARGET = first
+TARGET = second
 CONFIG   += console
 CONFIG   -= app_bundle
 
@@ -18,9 +16,9 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    mypoint.cpp \
-    test_mypoint.cpp
+    mylist.cpp \
+    test_mylist.cpp
 
 HEADERS += \
-    mypoint.h \
-    test_mypoint.h
+    mylist.h \
+    test_mylist.h
