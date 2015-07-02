@@ -37,4 +37,4 @@ Makefile*
 /build-*
 
 #remove first from git
-/first
+/first/*
