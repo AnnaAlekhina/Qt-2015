@@ -11,8 +11,8 @@ class queue : public MyList
 public:
 
     void addPrior(MyListData x);
-    MyListData getFirst();//получение первого эл-та
-    MyListData recItem();//извлечение первого
+    MyListData getMostPr();//получение первого эл-та
+    MyListData remMostPr();//извлечение первого
     bool is_empty();  
     queue& operator>>(MyListData x);//извлечение из очереди
     queue& operator<<(MyListData x);//добавление в очередь
