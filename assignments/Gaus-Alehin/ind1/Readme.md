@@ -1,4 +1,4 @@
-Alehin Taras
+Alehin Taras_
 Gaus Anna
 
 Очередь с приоритетом на базе односвязного списка
