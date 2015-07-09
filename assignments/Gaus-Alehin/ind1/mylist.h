@@ -37,8 +37,6 @@ public slots:
 
 signals:
   void CountChanged(int newcount);
-
-
 };
 
 #endif // MYLIST_H
