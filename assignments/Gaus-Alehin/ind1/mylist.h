@@ -2,8 +2,7 @@
 #define MYLIST_H
 
 #include <QObject>
-#include <iostream>
-using namespace std;
+
 typedef
 struct{
     int value;
@@ -25,6 +24,7 @@ protected:
     int co;
 public:
     explicit MyList(QObject *parent = 0);
+    MyList(const MyList &A);
     ~MyList();
     void addLast(MyListData newData);
     MyListData removeLast();

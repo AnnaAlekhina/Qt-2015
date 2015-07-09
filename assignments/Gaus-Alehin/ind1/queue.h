@@ -9,7 +9,7 @@ class queue : public MyList
     Q_OBJECT
 
 public:
-
+    queue::queue(queue const &A);
     void addPrior(MyListData x);
     MyListData getMostPr();//получение первого эл-та
     MyListData remMostPr();//извлечение первого
