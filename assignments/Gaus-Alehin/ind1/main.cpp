@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
     queue que;
     MyListData dat;
     MyListData dat2;
+    //12
     ifstream fin("TextFile.txt");
     ofstream fout("NewFile.txt");
     if(fin.is_open()){
