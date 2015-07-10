@@ -27,21 +27,18 @@ int main(int argc, char *argv[])
     MyListData dat;
     MyListData dat2;
     ifstream fin("TextFile.txt");
+    ofstream fout("NewFile.txt");
     if(fin.is_open()){
-
         while(!fin.fail()){
             fin.getline(dat.str,30);
-            //cout<<dat.str<<endl;
             dat.priority=strlen(dat.str);
-            //cout<<dat.priority<<endl;
-
             que.addPrior(dat);
-            for(int i=0 ;i<que.count();++i){
-            dat2=que.getItem(i);
-            cout<<dat2.str<<endl;}
-            cout<<"==================="<<endl;
         }
     }
 
+    for(int i=0 ;i<que.count();++i){
+        dat2=que.getItem(i);
+        fout<<dat2.str<<"\n";
+    }
     return 0;
 }
