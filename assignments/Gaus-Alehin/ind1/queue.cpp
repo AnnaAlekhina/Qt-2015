@@ -56,7 +56,7 @@ istream &operator>>(istream &is, queue &d)
     n.priority=pr;
     d.addPrior(n);
     return is;
-}
+}//не работает
 
 ostream &operator<<(ostream & os, queue const & d)
 {   MyListData dat;
@@ -66,23 +66,20 @@ ostream &operator<<(ostream & os, queue const & d)
         os<<dat.str<<" "<<dat.priority;
   }
     return os;
-}
-
-
+}//не работает
 
 
 queue &queue::operator<<(MyListData const &x)
 {
-
     addPrior(x);
     return *this;
 }
+
 queue &queue::operator>>(MyListData &x)
 {
-
     x=remMostPr();
     return *this;
-}
+}//не работает
 
 queue queue::operator+(queue &A)
 {

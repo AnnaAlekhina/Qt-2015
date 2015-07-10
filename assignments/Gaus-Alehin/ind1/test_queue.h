@@ -1,3 +1,7 @@
+//
+// Unit-тест класса queue
+//
+
 #ifndef TEST_QUEUE_H
 #define TEST_QUEUE_H
 
@@ -10,7 +14,10 @@ class test_queue : public QObject
 public:
     explicit test_queue(QObject *parent = 0);
 
-public slots:
+private slots:
+    void addPrior();
+    void getMostPr();
+    void remMostPr();
 
 };
 

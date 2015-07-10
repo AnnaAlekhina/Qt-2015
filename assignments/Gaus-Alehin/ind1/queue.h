@@ -21,8 +21,8 @@ public:
     queue& operator<<(MyListData const &x);//добавление в очередь
     queue operator+(queue &A);//слияние
 
-    friend ostream& operator<<(ostream & os,  queue & d);
-    friend istream& operator>>(istream & is, queue & d);
+    friend ostream& operator<<(ostream & os,  queue & d);//вывод в поток
+    friend istream& operator>>(istream & is, queue & d);//ввод в поток
 
 };
 #endif // QUEUE_H
