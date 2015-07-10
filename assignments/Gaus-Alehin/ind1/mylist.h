@@ -28,8 +28,8 @@ public:
     ~MyList();
     void addLast(MyListData newData);
     MyListData removeLast();
-    MyListData getItem(int index);
-    int count();
+    MyListData getItem(int index) const;
+    int count() const;
     int getCo();
 
 public slots:

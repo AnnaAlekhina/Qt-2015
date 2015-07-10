@@ -1,11 +1,15 @@
 #include "queue.h"
 
-/*
-queue::queue(QObject *parent) : QObject(parent)
+
+queue::queue(QObject *parent) : MyList(parent)
 {
 
 }
-*/
+
+queue::queue(const queue &A)
+{
+}
+
 
 void queue::addPrior(MyListData x)
 {   ListNode* p=new ListNode;
@@ -37,15 +41,9 @@ void queue::addPrior(MyListData x)
         first->data=x;
     }
 }
-/*
-ostream & operator<<(ostream & os, queue const & d)
-{
-    for(int i=0; i<d.count(); i++)
-        os<<d.getItem(i)<<" ";
-    return os;
-}
 
-istream &queue::operator>>(istream &is, queue &d)
+
+istream &operator>>(istream &is, queue &d)
 {   int v,pr;
     is>>v>>pr;
     MyListData n;
@@ -54,22 +52,33 @@ istream &queue::operator>>(istream &is, queue &d)
     d.addPrior(n);
     return is;
 }
-*/
 
-/*
+ostream &operator<<(ostream & os, queue const & d)
+{   MyListData dat;
+
+    for(int i=0; i<d.count(); i++){
+        dat=d.getItem(i);
+        os<<dat.value<<" "<<dat.priority;
+  }
+    return os;
+}
+
+
+
+
 queue &queue::operator<<(MyListData const &x)
 {
-    queue q=this;
-    q.addPrior(x);
-    return q;
+
+    addPrior(x);
+    return *this;
 }
 queue &queue::operator>>(MyListData &x)
 {
-    queue q=this;
-    x=q.remMostPr();
-    return q;
+
+    x=remMostPr();
+    return *this;
 }
-*/
+
 queue queue::operator+(queue &A)
 {
     queue q=A;

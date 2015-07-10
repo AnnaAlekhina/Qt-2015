@@ -32,7 +32,7 @@ void MyList::addLast(MyListData newData)
     //emit CountChanged(count());
 }
 
-MyListData MyList::getItem(int index)
+MyListData MyList::getItem(int index)const
 {
     if(index<0)
         throw "index is out of bounds";
@@ -50,7 +50,7 @@ MyListData MyList::getItem(int index)
         throw "index is out of bounds";
 }
 
-int MyList::count(){
+int MyList::count() const{
     ListNode *q=first;
     int i=0;
     while(q){
