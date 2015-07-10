@@ -8,6 +8,9 @@ queue::queue(QObject *parent) : MyList(parent)
 
 queue::queue(const queue &A)
 {
+    co=A.co;
+    first=A.first;
+
 }
 
 
@@ -16,38 +19,40 @@ void queue::addPrior(MyListData x)
     p->data=x;
     p->next=NULL;
     if(first){
+
         ListNode* q=first;
-        if (q->next){
-            while(q->next)
-                if(p->data.priority<q->next->data.priority)
+        if(p->data.priority>q->data.priority){
+            if (q->next){
+                while(q->next && p->data.priority>q->next->data.priority)
                     q=q->next;
-            p->next=q->next;
-            q->next=p;
-        }
-        else{
-            if(p->data.priority > first->data.priority){
-                first->next=p;
+                p->next=q->next;
+                q->next=p;
             }
             else{
-                p->next=first;
-                first=p;
+                if(p->data.priority > first->data.priority){
+                    first->next=p;
+                }
+                else{
+                    p->next=first;
+                    first=p;
+                }
             }
-        }
 
+        }
+        else    {
+            p->next=first;
+            first=p;
+        }
     }
-    else {
-        first=new ListNode;
-        first->next=NULL;
-        first->data=x;
-    }
+    else       first=p;
 }
 
 
 istream &operator>>(istream &is, queue &d)
-{   int v,pr;
-    is>>v>>pr;
-    MyListData n;
-    n.value=v;
+{   MyListData n;
+    is.getline(n.str,30);
+    int pr;
+    is>>pr;
     n.priority=pr;
     d.addPrior(n);
     return is;
@@ -58,7 +63,7 @@ ostream &operator<<(ostream & os, queue const & d)
 
     for(int i=0; i<d.count(); i++){
         dat=d.getItem(i);
-        os<<dat.value<<" "<<dat.priority;
+        os<<dat.str<<" "<<dat.priority;
   }
     return os;
 }

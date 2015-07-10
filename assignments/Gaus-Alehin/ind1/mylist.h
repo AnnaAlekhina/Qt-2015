@@ -2,10 +2,11 @@
 #define MYLIST_H
 
 #include <QObject>
+#include <string.h>
 
 typedef
 struct{
-    int value;
+    char str[30];
     int priority;
 } MyListData;
 

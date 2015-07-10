@@ -6,6 +6,12 @@ MyList::MyList(QObject *parent) : QObject(parent)
     first = nullptr;
 }
 
+MyList::MyList(const MyList &A)
+{
+    first=A.first;
+    co=A.co;
+}
+
 MyList::~MyList()
 {
     while(first){

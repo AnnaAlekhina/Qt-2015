@@ -1,9 +1,9 @@
 #include <QCoreApplication>
 #include <iostream>
+#include <fstream>
 #include "test_mylist.h"
 #include "mylist.h"
-
-
+#include "queue.h"
 using namespace std;
 
 int main(int argc, char *argv[])
@@ -23,5 +23,25 @@ int main(int argc, char *argv[])
         cout<<A.getCo()<<endl;}
 
 */
+    queue que;
+    MyListData dat;
+    MyListData dat2;
+    ifstream fin("TextFile.txt");
+    if(fin.is_open()){
+
+        while(!fin.fail()){
+            fin.getline(dat.str,30);
+            //cout<<dat.str<<endl;
+            dat.priority=strlen(dat.str);
+            //cout<<dat.priority<<endl;
+
+            que.addPrior(dat);
+            for(int i=0 ;i<que.count();++i){
+            dat2=que.getItem(i);
+            cout<<dat2.str<<endl;}
+            cout<<"==================="<<endl;
+        }
+    }
+
     return 0;
 }
