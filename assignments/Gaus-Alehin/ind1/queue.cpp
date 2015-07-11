@@ -1,6 +1,5 @@
 #include "queue.h"
 
-
 queue::queue(QObject *parent) : MyList(parent)
 {
 
@@ -8,13 +7,15 @@ queue::queue(QObject *parent) : MyList(parent)
 
 queue::queue(const queue &A)
 {
-
-    ListNode *p=A.first;
-    while(p->next){
-        addLast(p->data);
-        p=p->next;
+    MyListData dat;
+    if(A.first){
+        addLast(A.first->data);
+        for(int i=1;i<A.count();i++){
+            dat=A.getItem(i);
+            addLast(dat);
+        }
     }
-
+    else first = nullptr;
 }
 
 queue &queue::operator=(queue &A)
@@ -25,12 +26,15 @@ queue &queue::operator=(queue &A)
         delete t;
     }
 
-    ListNode *p=A.first;
-    while(p->next){
-        addLast(p->data);
-        p=p->next;
+    MyListData dat;
+    if(A.first){
+        addLast(A.first->data);
+        for(int i=1;i<A.count();i++){
+            dat=A.getItem(i);
+            addLast(dat);
+        }
     }
-
+    else first = nullptr;
     return *this;
 }
 
@@ -79,17 +83,19 @@ istream &operator>>(istream &is, queue &d)
     n.priority=pr;
     d.addPrior(n);
     return is;
-}//не работает
+}
 
 ostream &operator<<(ostream & os, queue const & d)
-{   MyListData dat;
-
+{
+    MyListData dat;
+    os<<" QUEUE: \n";
     for(int i=0; i<d.count(); i++){
         dat=d.getItem(i);
-        os<<dat.str<<"\n ";
-  }
+        os<<dat.str<<"\n";
+    }
+    os<<"======= \n";
     return os;
-}//не работает
+}
 
 
 queue &queue::operator<<(MyListData const &x)
@@ -102,7 +108,7 @@ queue &queue::operator>>(MyListData &x)
 {
     x=remMostPr();
     return *this;
-}//не работает
+}
 
 queue queue::operator+(queue &A)
 {

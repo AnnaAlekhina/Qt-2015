@@ -10,7 +10,7 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-    //QTest::qExec(new test_queue, argc, argv);
+    QTest::qExec(new test_queue, argc, argv);
     /*
     Obr B;
     QObject::connect(&A, SIGNAL(CountChanged(int)),
@@ -24,10 +24,8 @@ int main(int argc, char *argv[])
         cout<<A.getCo()<<endl;}
 
 */
-    queue que,que1;
+    queue que;
     MyListData dat;
-    MyListData dat2;    
-
     ifstream fin("TextFile.txt");
     ofstream fout("NewFile.txt");
 
@@ -38,11 +36,8 @@ int main(int argc, char *argv[])
             que.addPrior(dat);
         }
     }
-    //fout<<que;
-    que1.addPrior(dat);
-    que1=que;
-    cout<<que1;
-    cout<<que;
-
+    fout<<que;
+    fout.close();
+    fin.close();
     return 0;
 }
