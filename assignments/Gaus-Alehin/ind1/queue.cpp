@@ -8,9 +8,30 @@ queue::queue(QObject *parent) : MyList(parent)
 
 queue::queue(const queue &A)
 {
-    co=A.co;
-    first=A.first;
 
+    ListNode *p=A.first;
+    while(p->next){
+        addLast(p->data);
+        p=p->next;
+    }
+
+}
+
+queue &queue::operator=(queue &A)
+{
+    if(first)while(first){
+        ListNode *t = first;
+        first = first -> next;
+        delete t;
+    }
+
+    ListNode *p=A.first;
+    while(p->next){
+        addLast(p->data);
+        p=p->next;
+    }
+
+    return *this;
 }
 
 
@@ -53,6 +74,8 @@ istream &operator>>(istream &is, queue &d)
     is.getline(n.str,30);
     int pr;
     is>>pr;
+    is.ignore();
+    cout<<n.str;
     n.priority=pr;
     d.addPrior(n);
     return is;
@@ -63,7 +86,7 @@ ostream &operator<<(ostream & os, queue const & d)
 
     for(int i=0; i<d.count(); i++){
         dat=d.getItem(i);
-        os<<dat.str<<" "<<dat.priority;
+        os<<dat.str<<"\n ";
   }
     return os;
 }//не работает

@@ -9,7 +9,7 @@ MyList::MyList(QObject *parent) : QObject(parent)
 MyList::MyList(const MyList &A)
 {
     first=A.first;
-    co=A.co;
+
 }
 
 MyList::~MyList()
@@ -66,10 +66,6 @@ int MyList::count() const{
     return i;
 }
 
-int MyList::getCo()
-{
-    return co;
-}
 
 MyListData MyList::removeLast(){
     if(first){
@@ -92,6 +88,4 @@ MyListData MyList::removeLast(){
    // emit CountChanged(count());
 }
 
-void MyList::SetCount(){
-    co=count();
-}
+

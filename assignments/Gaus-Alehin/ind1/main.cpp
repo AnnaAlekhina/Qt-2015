@@ -10,7 +10,7 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-    QTest::qExec(new test_queue, argc, argv);
+    //QTest::qExec(new test_queue, argc, argv);
     /*
     Obr B;
     QObject::connect(&A, SIGNAL(CountChanged(int)),
@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
         cout<<A.getCo()<<endl;}
 
 */
-    queue que;
+    queue que,que1;
     MyListData dat;
     MyListData dat2;    
 
@@ -32,17 +32,17 @@ int main(int argc, char *argv[])
     ofstream fout("NewFile.txt");
 
     if(fin.is_open()){
-        while(!fin.fail()){
+        while(!fin.eof()){
             fin.getline(dat.str,30);
             dat.priority=strlen(dat.str);
             que.addPrior(dat);
         }
     }
-
-    for(int i=0 ;i<que.count();++i){
-        dat2=que.getItem(i);
-        fout<<dat2.str<<"\n";
-    }
+    //fout<<que;
+    que1.addPrior(dat);
+    que1=que;
+    cout<<que1;
+    cout<<que;
 
     return 0;
 }

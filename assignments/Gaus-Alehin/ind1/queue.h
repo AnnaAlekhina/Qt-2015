@@ -13,6 +13,7 @@ class queue : public MyList
 public:
     explicit queue(QObject *parent = 0);
     queue(queue const &A);
+    queue &operator=(queue &A);
     void addPrior(MyListData x);
     MyListData getMostPr();//получение первого эл-та
     MyListData remMostPr();//извлечение первого
@@ -21,8 +22,12 @@ public:
     queue& operator<<(MyListData const &x);//добавление в очередь
     queue operator+(queue &A);//слияние
 
-    friend ostream& operator<<(ostream & os,  queue & d);//вывод в поток
+    friend ostream& operator<<(ostream & os,  queue const & d);//вывод в поток
     friend istream& operator>>(istream & is, queue & d);//ввод в поток
 
 };
+
+ostream& operator<<(ostream & os,  queue const & d);//вывод в поток
+istream& operator>>(istream & is, queue & d);//ввод в поток
+
 #endif // QUEUE_H
