@@ -25,10 +25,13 @@ int main(int argc, char *argv[])
 
 */
     queue que;
+    char ch[30];
+    cout<<"name file: "<<endl;
+    cin.getline(ch,30);
     MyListData dat;
-    ifstream fin("TextFile.txt");
+    ifstream fin(ch);
     ofstream fout("NewFile.txt");
-
+    cout<<"create new file "<<endl;
     if(fin.is_open()){
         while(!fin.eof()){
             fin.getline(dat.str,30);
