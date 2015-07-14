@@ -1,0 +1,121 @@
+\documentclass[12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage[backend=biber,style=authoryear,autocite=footnote]{biblatex}
+\usepackage{textcase}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{listings}
+
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage[autostyle]{csquotes}
+\addbibresource{biblio.bib}
+\begin{document}	
+\title{Отчет}
+\author{Алехин Тарас\\ 
+	Гаус Анна}
+%\date{14/07/15}
+%\maketitle
+\input{./t.tex}
+\vfill\tableofcontents\clearpage
+
+\begin{abstract}
+	Отчет по работе на летней практике.
+\end{abstract}
+\chapter{Проект}
+\section{Постановка задачи}
+
+	Очередь с приоритетом на базе односвязного списка
+	
+	Очередь с приоритетом \autocite{greenwade93}  –  структура данных с доступом к элементам «первый пришёл – первый вышел». Добавление элемента возможно лишь в конец очереди, выборка – только из начала очереди, при этом выбранный элемент из очереди удаляется.\\
+	
+	
+	Реализовать класс:
+	
+	Класс должен содержать методы:
+	
+	добавление элемента в очередь, с заданным приоритета;
+	
+	получение значения очередного элемента;
+	
+	извлечение очередного элемента;
+	
+	проверка очереди на пустоту;\\
+	
+	
+	Для класса необходимо перегрузить следующие операторы:
+	
+	operator>> извлечение элемента из очереди;
+	
+	operator<< добавление элемента в очередь;
+	
+	operator+ слияние двух очередей;
+	
+	ввод/вывод в поток.\\
+	
+	Используя очередь строк решить задачу:
+	
+	
+	Дан файл строк. Выдать строки в порядке убывания их длин. Используя один проход по файлу.
+	
+\section{Метод решения}
+	\lstdefinestyle{customc}{
+		belowcaptionskip=1\baselineskip,
+		breaklines=true,
+		frame=L,
+		xleftmargin=\parindent,
+		language=C++,
+		showstringspaces=false,
+		basicstyle=\footnotesize\ttfamily,
+		keywordstyle=\bfseries\color{green!40!black},
+		commentstyle=\itshape\color{purple!40!black},
+		identifierstyle=\color{blue},
+		stringstyle=\color{orange}
+	}
+	\lstset{language=C++,style=customc}          % Задаем язык исходного кода
+	\begin{lstlisting}                
+	#include <QCoreApplication>
+	#include <iostream>
+	#include <fstream>
+	#include "test_mylist.h"
+	#include "test_queue.h"
+	#include "mylist.h"
+	#include "queue.h"
+	using namespace std;
+	
+	int main(int argc, char *argv[])
+	{
+		QCoreApplication a(argc, argv);
+		QTest::qExec(new test_queue, argc, argv);	
+		queue que;
+		char ch[30];
+		cout<<"name file: "<<endl;
+		cin.getline(ch,30);
+		MyListData dat;
+		ifstream fin(ch);
+		ofstream fout("NewFile.txt");
+		cout<<"create new file "<<endl;
+		if(fin.is_open()){
+				while(!fin.eof()){
+				fin.getline(dat.str,30);
+				dat.priority=strlen(dat.str);
+				que.addPrior(dat);
+			}
+		}
+		fout<<que;
+		fout.close();
+		fin.close();
+		return 0;
+	}
+	\end{lstlisting}                  
+	
+
+
+\section{Результат}
+	
+	В траве сидел кузнечик
+\printbibliography
+\end{document}
+
